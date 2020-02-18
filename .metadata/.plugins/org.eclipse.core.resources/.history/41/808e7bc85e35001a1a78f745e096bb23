@@ -1,0 +1,78 @@
+package getRequest;
+
+
+
+import org.json.simple.JSONObject;
+
+import org.testng.Assert;
+
+import org.testng.annotations.Test;
+
+import groovyjarjarasm.asm.commons.Method;
+import static io.restassured.RestAssured.*;
+import static io.restassured.matcher.ResponseAwareMatcher.*;
+
+import static io.restassured.RestAssured.given;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.RestAssured;
+import io.restassured.matcher.RestAssuredMatchers;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
+
+import static com.jayway.restassured.RestAssured.given;
+
+
+
+public class GetData {
+	
+	//System.setProperty("javax.net.ssl.trustStore", "C:/.keystore");
+	//System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
+@Test
+ public void getuserCalendar() {
+	
+	
+	RestAssured.useRelaxedHTTPSValidation();
+	//specify base URI
+		 //RestAssured.baseURI=("https://test.brigosha.com/api/calendar?year_month=December-2019&page=1");
+		 	 
+   //Request Object
+	//RequestSpecification httpRequest=RestAssured.given();
+	
+	// JSONObject requestparams=new JSONObject();
+	//given()
+	//.header("auth-id","47")
+	//.header("auth-token","bgsdev")
+	//.header("api-version","6");
+	
+	
+	//Response Object
+	//Response response=httpRequest.request(io.restassured.http.Method.GET,"");
+	
+	//print response in console
+	//String responseBody=response.getBody().asString();
+	
+	//System.out.println("Response body is"+ responseBody);
+	
+	
+	RestAssured.baseURI="https://test.brigosha.com/api/calendar";
+	RequestSpecification httpRequest=RestAssured.given();
+	JSONObject requestparams=new JSONObject();
+    given().
+    auth().preemptive().basic("api-version", "6").
+        header("api-section", "attendance").header("auth-id",47).header("auth-token","bgsdev"). 
+        param("year_month", "December-2019").
+        param("page", "1");
+ 
+    //when().
+        //get("/api/calendar").
+   // then().equals("200");
+    Response response=httpRequest.request(io.restassured.http.Method.GET,"");
+String responseBody=response.getBody().asString();
+	
+System.out.println("Response body is"+ responseBody);
+ 
+ }
+
+	}
+

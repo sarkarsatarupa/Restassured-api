@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="3983" started-at="2020-02-16T14:32:33Z" finished-at="2020-02-16T14:32:37Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="3983" started-at="2020-02-16T14:32:33Z" finished-at="2020-02-16T14:32:37Z">
+      <class name="getRequest.GetLeaveSummary">
+        <test-method status="PASS" signature="testGet()[pri:0, instance:getRequest.GetLeaveSummary@3fb1549b]" name="testGet" is-config="true" duration-ms="937" started-at="2020-02-16T20:02:33Z" finished-at="2020-02-16T20:02:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGet -->
+        <test-method status="PASS" signature="LeaveSummaryBody()[pri:0, instance:getRequest.GetLeaveSummary@3fb1549b]" name="LeaveSummaryBody" duration-ms="1894" started-at="2020-02-16T20:02:34Z" finished-at="2020-02-16T20:02:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LeaveSummaryBody -->
+        <test-method status="PASS" signature="test()[pri:0, instance:getRequest.GetLeaveSummary@3fb1549b]" name="test" duration-ms="1077" started-at="2020-02-16T20:02:36Z" finished-at="2020-02-16T20:02:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test -->
+      </class> <!-- getRequest.GetLeaveSummary -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

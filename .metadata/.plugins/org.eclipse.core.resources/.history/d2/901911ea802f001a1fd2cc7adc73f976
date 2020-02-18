@@ -1,0 +1,46 @@
+package getRequest;
+
+
+
+import org.json.simple.JSONObject;
+import org.testng.Assert;
+
+import org.testng.annotations.Test;
+
+import groovyjarjarasm.asm.commons.Method;
+import io.restassured.RestAssured;
+import static io.restassured.RestAssured.given;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+
+public class GetData {
+	
+	//System.setProperty("javax.net.ssl.trustStore", "C:/.keystore");
+	//System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
+@Test
+ public void getweatherDetails() {
+	//specify base URI
+		 RestAssured.baseURI=("https://test.brigosha.com/api/calendar?year_month=October-2019&page=2");
+		 	 
+   //Request Object
+	RequestSpecification httpRequest=RestAssured.given();
+	
+	 JSONObject requestparams=new JSONObject();
+	given()
+	.header("auth-id","47")
+	.header("api-version","6");
+	
+	
+	//Response Object
+	Response response=httpRequest.request(io.restassured.http.Method.GET,"");
+	
+	//print response in console
+	String responseBody=response.getBody().asString();
+	
+	System.out.println("Response body is"+ responseBody);
+	
+
+ 
+ }
+}

@@ -1,0 +1,49 @@
+package Datadriven;
+
+import org.json.simple.JSONObject;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import junit.framework.Assert;
+
+public class DataDrivenTesting_AddNewEmployeess {
+@Test()
+void postNewEmployees(String ename,String esal,String eage) {
+	RestAssured.baseURI="http://dummy.restapiexample.com/api/v1";
+	RequestSpecification httpRequest=RestAssured.given();
+	
+	//
+	JSONObject requestParams=new JSONObject();
+	requestParams.put("name","ename");
+	requestParams.put("salary","esal");
+	requestParams.put("age","eage");
+	
+	
+	httpRequest.header("Content-Type","appliction/json");
+	
+	httpRequest.body(requestParams.toJSONString());
+	
+	//Post Request
+	//Response.response=httpRequest.request(Method.POST,"/create");
+	
+	
+	//Capture Response Body To Perform Validations
+	Response response=httpRequest.request(io.restassured.http.Method.POST,"/create");
+	String responseBody=response.getBody().asString();
+	
+	
+	Assert.assertEquals(responseBody.contains(ename),true);
+	Assert.assertEquals(responseBody.contains(esal),true);
+	Assert.assertEquals(responseBody.contains(eage  ),true);
+
+	System.out.println("Response body is"+ responseBody);
+	}
+	 
+	
+	
+}
+
+

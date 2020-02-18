@@ -1,0 +1,5 @@
+package com.restassuredapi.base;
+
+public class TestBase {
+
+}
