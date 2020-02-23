@@ -1,6 +1,6 @@
 package getRequest;
 
-import static com.jayway.restassured.RestAssured.given;
+//import static com.jayway.restassured.RestAssured.given;
 
 
 
@@ -9,8 +9,8 @@ import java.util.HashMap;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.jayway.restassured.response.ResponseBodyData;
-import com.jayway.restassured.response.ValidatableResponse;
+//import com.jayway.restassured.response.ResponseBodyData;
+//import com.jayway.restassured.response.ValidatableResponse;
 
 import io.restassured.RestAssured;
 
