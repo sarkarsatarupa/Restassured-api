@@ -6,6 +6,7 @@ package getRequest;
 
 import java.util.HashMap;
 
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -46,7 +47,7 @@ public class GetLeaveSummary {
 	    	RestAssured.useRelaxedHTTPSValidation();
 			 map.put("api-version", "6");
 			 map.put("api-section", "projects");
-			 map.put("auth-id", "47");
+			 map.put("auth-id", "1");
 			 map.put("auth-token", "bgsdev"); 
 		 }
 	    @Test
@@ -57,7 +58,7 @@ public class GetLeaveSummary {
 	    	.headers(map)
 	        //.param("type", 1)
 	    	.when()
-	    	.get("https://test.brigosha.com/api/leave")
+	    	.get("https://test.brigosha.com/api/notifications?type=1")
 	        .then()
 	        .header("Content-Type", "application/json")
 	    
@@ -66,26 +67,33 @@ public class GetLeaveSummary {
 	    @Test
 	    public void LeaveSummaryBody() throws InterruptedException 
 	    {
-	     RestAssured.baseURI = "https://test.brigosha.com/api/leave";
+	     RestAssured.baseURI = "https://test.brigosha.com/api/notifications?type=1";
 	     RequestSpecification httpRequest = RestAssured.given();
 	     httpRequest.header("api-version", "6");
 	     httpRequest.header("api-section", "projects");
-	     httpRequest.header("auth-id", "47");
+	     httpRequest.header("auth-id", "1");
 	     httpRequest.header("auth-token", "bgsdev");
 	    // httpRequest.param("type",1);
 	     
 	 // Retrieve the body of the Response
-	  // By usinxxg the ResponseBody.asString() method, we can convert the  body
+	  // By using the ResponseBody.asString() method, we can convert the  body
 	     // into the string representation.
-	     
-	     Response response=httpRequest.request(io.restassured.http.Method.GET," ");
-	    // String responseBody=response.getBody().asString();
-	    JsonPath responseBody= response.jsonPath();
-	     System.out.println("Response body is"+ responseBody);
 	     Thread.sleep(1000);
-	       
-	    System.out.println("id is"+ responseBody.get("Leave.user_id"));
+	     Response response=httpRequest.request(io.restassured.http.Method.GET," ").then().extract().path("records[0].id");
+	   // String responseBody=response.getBody().asString();
+	     
+	   // JsonPath responseBody= response.jsonPath();
+	     //System.out.println("Response body is"+ responseBody);
+	     Thread.sleep(1000);
+	     response.prettyPrint();
+	     int l=response.asString().length();
+	     System.out.println(l);
+	     
+	    for(int i=0;i<l;i++) 
+	    	
+	    	System.out.println(response[i]+ " ");
 	    
+	  
 	 
         }
 
